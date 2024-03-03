@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option go_package = "./api";
+
+package api;
+
+// import "google/protobuf/empty.proto";
+
+service Api {
+    rpc GetDevices (GetDevicesRequest) returns (GetDevicesResponse);
+}
+
+message GetDevicesRequest {}
+
+message GetDevicesResponse {
+    repeated Device devices = 1;
+}
+
+message Address {
+    string ip = 1;
+    string netmask = 2;
+    string broadcast = 3;
+    string p2p = 4;
+}
+
+message Device {
+    string name = 1;
+    string description = 2;
+    int32 flags = 3;
+    repeated Address addresses = 4;
+}
